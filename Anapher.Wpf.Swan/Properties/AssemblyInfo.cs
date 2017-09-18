@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Anapher.Wpf.Swan")]
-[assembly: AssemblyDescription("Stuff we all need for handling the beauty of WPF")]
+[assembly: AssemblyDescription("Stuff we all need to handle the beauty of WPF and MVVM.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Anapher")]
 [assembly: AssemblyProduct("Anapher.Wpf.Swan")]
