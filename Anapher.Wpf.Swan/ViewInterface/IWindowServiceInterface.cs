@@ -1,6 +1,6 @@
-using System;
+using System.Windows;
 
-namespace Anapher.ViewInterface
+namespace Anapher.Wpf.Swan.ViewInterface
 {
 	/// <summary>
 	/// Methods that handle the view
@@ -89,7 +89,7 @@ namespace Anapher.ViewInterface
 		/// <typeparam name="T">The type of the parameter of the delegate. For WPF, that must be Window</typeparam>
 		/// <param name="showDialogDelegate">The delegate that will open the dialog</param>
 		/// <returns>Return the dialog result</returns>
-        bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate) where T : class;
+        bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate) where T : Window;
 
 		/// <summary>
 		/// Show a new dialog (e. g. a file dialog)
@@ -98,7 +98,7 @@ namespace Anapher.ViewInterface
 		/// <param name="showDialogDelegate">The delegate that will open the dialog</param>
 		/// <param name="callerViewModel">The view model of the window that should be the parent of the dialog</param>
 		/// <returns>Return the dialog result</returns>
-		bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate, object callerViewModel) where T : class;
+		bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate, object callerViewModel) where T : Window;
 
 	    /// <summary>
 	    ///     Displays a message box.
@@ -292,256 +292,5 @@ namespace Anapher.ViewInterface
     /// </summary>
     /// <param name="window">The owner window</param>
     /// <returns>Return the result of the dialog</returns>
-    public delegate bool? ShowDialogDelegate<in T>(T window);
-
-	/// <devdoc>
-	///    <para>
-	///       Specifies identifiers to
-	///       indicate the return value of a dialog box.
-	///    </para>
-	/// </devdoc>
-	/// <ExternalAPI/> 
-	public enum MessageBoxResult
-	{
-
-		/// <devdoc>
-		///    <para>
-		///       
-		///       Nothing is returned from the dialog box. This
-		///       means that the modal dialog continues running.
-		///       
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		None = 0,
-
-		/// <devdoc>
-		///    <para>
-		///       The
-		///       dialog box return value is
-		///       OK (usually sent from a button labeled OK).
-		///       
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		OK = 1,
-
-		/// <devdoc>
-		///    <para>
-		///       The
-		///       dialog box return value is Cancel (usually sent
-		///       from a button labeled Cancel).
-		///       
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Cancel = 2,
-
-		/// <devdoc>
-		///    <para>
-		///       The dialog box return value is
-		///       Yes (usually sent from a button labeled Yes).
-		///       
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Yes = 6,
-
-		/// <devdoc>
-		///    <para>
-		///       The dialog box return value is
-		///       No (usually sent from a button labeled No).
-		///       
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		No = 7,
-
-		// NOTE: if you add or remove any values in this enum, be sure to update MessageBox.IsValidMessageBoxResult()
-	}
-	/// <devdoc>
-	///    <para>[To be supplied.]</para>
-	/// </devdoc>
-	[Flags]
-	public enum MessageBoxOptions
-	{
-		/// <devdoc>
-		///     <para>
-		///         Specifies that all default options should be used.
-		///     </para>
-		/// </devdoc>
-		/// <ExternalApi />
-		None = 0x00000000,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the message box is displayed on the active desktop. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		ServiceNotification = 0x00200000,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the message box is displayed on the active desktop. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		DefaultDesktopOnly = 0x00020000,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the message box text is right-aligned.
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		RightAlign = 0x00080000,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the message box text is displayed with Rtl reading order.
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		RtlReading = 0x00100000,
-	}
-	/// <devdoc>
-	///    <para>[To be supplied.]</para>
-	/// </devdoc>
-	public enum MessageBoxImage
-	{
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contain no symbols. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		None = 0,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains a
-		///       hand symbol. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Hand = 0x00000010,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies
-		///       that the message
-		///       box contains a question
-		///       mark symbol. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Question = 0x00000020,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains an
-		///       exclamation symbol. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Exclamation = 0x00000030,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains an
-		///       asterisk symbol. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Asterisk = 0x00000040,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the message box contains a hand icon. This field is
-		///       constant.
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Stop = Hand,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains a
-		///       hand icon. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Error = Hand,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the message box contains an exclamation icon. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Warning = Exclamation,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains an
-		///       asterisk icon. 
-		///    </para>
-		/// </devdoc>
-		/// <ExternalAPI/> 
-		Information = Asterisk,
-
-		// NOTE: if you add or remove any values in this enum, be sure to update MessageBox.IsValidMessageBoxIcon()    
-	}
-	/// <devdoc>
-	///    <para>[To be supplied.]</para>
-	/// </devdoc>
-	public enum MessageBoxButton
-	{
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains an OK button. This field is
-		///       constant.
-		///    </para>
-		/// </devdoc>
-		OK = 0x00000000,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains OK and Cancel button. This field
-		///       is
-		///       constant.
-		///    </para>
-		/// </devdoc>
-		OKCancel = 0x00000001,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains Yes, No, and Cancel button. This
-		///       field is
-		///       constant.
-		///    </para>
-		/// </devdoc>
-		YesNoCancel = 0x00000003,
-
-		/// <devdoc>
-		///    <para>
-		///       Specifies that the
-		///       message box contains Yes and No button. This field is
-		///       constant.
-		///    </para>
-		/// </devdoc>
-		YesNo = 0x00000004,
-
-		// NOTE: if you add or remove any values in this enum, be sure to update MessageBox.IsValidMessageBoxButton()
-	}
+    public delegate bool? ShowDialogDelegate<in T>(T window) where T : Window;
 }

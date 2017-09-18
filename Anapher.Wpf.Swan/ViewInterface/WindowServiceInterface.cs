@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Anapher.ViewInterface
+namespace Anapher.Wpf.Swan.ViewInterface
 {
 	/// <summary>
 	///     The interface to the view

@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows;
-using Anapher.ViewInterface;
-using MessageBoxButton = Anapher.ViewInterface.MessageBoxButton;
-using MessageBoxImage = Anapher.ViewInterface.MessageBoxImage;
-using MessageBoxOptions = Anapher.ViewInterface.MessageBoxOptions;
-using MessageBoxResult = Anapher.ViewInterface.MessageBoxResult;
-using WindowState = Anapher.ViewInterface.WindowState;
+using Anapher.Wpf.Swan.ViewInterface;
 
 namespace Anapher.Wpf.Swan
 {
@@ -129,12 +123,12 @@ namespace Anapher.Wpf.Swan
 			}
 		}
 
-		public bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate) where T : class
+		public bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate) where T : Window
 		{
 			return ShowDialog(showDialogDelegate, null);
 		}
 
-		public bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate, object callerViewModel) where T : class
+		public bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate, object callerViewModel) where T : Window
 		{
 			var window = GetViewModelWindowOrCurrent(callerViewModel) as T;
 			return showDialogDelegate(window);
@@ -164,7 +158,7 @@ namespace Anapher.Wpf.Swan
 		public MessageBoxResult ShowMessageBox(string text, string caption, MessageBoxButton buttons,
 			MessageBoxImage icon, MessageBoxResult defResult)
 		{
-			return ShowMessageBox(text, caption, buttons, icon, defResult, (object) null);
+			return ShowMessageBox(text, caption, buttons, icon, defResult, null);
 		}
 
 		public MessageBoxResult ShowMessageBox(string text, string caption, MessageBoxButton buttons,
@@ -175,42 +169,42 @@ namespace Anapher.Wpf.Swan
 
 		public MessageBoxResult ShowMessageBox(string text, object viewModel)
 		{
-			return (MessageBoxResult) MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text);
+			return MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text);
 		}
 
 		public MessageBoxResult ShowMessageBox(string text, string caption, object viewModel)
 		{
-			return (MessageBoxResult) MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption);
+			return MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption);
 		}
 
 		public MessageBoxResult ShowMessageBox(string text, string caption, MessageBoxButton buttons, object viewModel)
 		{
-			return (MessageBoxResult) MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption,
-				(System.Windows.MessageBoxButton) buttons);
+			return MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption,
+				buttons);
 		}
 
 		public MessageBoxResult ShowMessageBox(string text, string caption, MessageBoxButton buttons,
 			MessageBoxImage icon, object viewModel)
 		{
-			return (MessageBoxResult) MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption,
-				(System.Windows.MessageBoxButton) buttons, (System.Windows.MessageBoxImage) icon);
+			return MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption,
+				buttons, icon);
 		}
 
 		public MessageBoxResult ShowMessageBox(string text, string caption, MessageBoxButton buttons,
 			MessageBoxImage icon, MessageBoxResult defResult, object viewModel)
 		{
-			return (MessageBoxResult) MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption,
-				(System.Windows.MessageBoxButton) buttons, (System.Windows.MessageBoxImage) icon,
-				(System.Windows.MessageBoxResult) defResult);
+			return MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption,
+				buttons, icon,
+				defResult);
 		}
 
 		public MessageBoxResult ShowMessageBox(string text, string caption, MessageBoxButton buttons,
 			MessageBoxImage icon, MessageBoxResult defResult, MessageBoxOptions options, object viewModel)
 		{
-			return (MessageBoxResult) MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption,
-				(System.Windows.MessageBoxButton) buttons, (System.Windows.MessageBoxImage) icon,
-				(System.Windows.MessageBoxResult) defResult,
-				(System.Windows.MessageBoxOptions) options);
+			return MessageBoxEx.Show(GetViewModelWindowOrCurrent(viewModel), text, caption,
+				buttons, icon,
+				defResult,
+				options);
 		}
 
 		/// <summary>
@@ -263,41 +257,6 @@ namespace Anapher.Wpf.Swan
 			{
 				return new TWindow();
 			}
-		}
-	}
-
-	public class WpfWindow : IWindow
-	{
-		public WpfWindow(Window window)
-		{
-			Window = window;
-		}
-
-		public Window Window { get; }
-
-		public event EventHandler Closed
-		{
-			add => Window.Closed += value;
-			remove => Window.Closed -= value;
-		}
-
-		public event CancelEventHandler Closing;
-
-
-		public void Close()
-		{
-			Window.Close();
-		}
-
-		public void Activate()
-		{
-			Window.Activate();
-		}
-
-		public WindowState WindowState
-		{
-			get => (WindowState) Window.WindowState;
-			set => Window.WindowState = (System.Windows.WindowState) value;
 		}
 	}
 }

@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anapher.Wpf.Swan", "Anapher.Wpf.Swan\Anapher.Wpf.Swan.csproj", "{DE56441C-B66E-40C5-86B3-DE881D7D09F7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anapher.ViewInterface", "Anapher.ViewInterface\Anapher.ViewInterface.csproj", "{B6AC60A7-D695-4621-92C6-7EB792598A4D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anapher.Wpf.Swan.Tests", "Anapher.Wpf.Swan.Tests\Anapher.Wpf.Swan.Tests.csproj", "{1B36D195-FB00-45A3-8698-43A8C76A79B2}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{DE56441C-B66E-40C5-86B3-DE881D7D09F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE56441C-B66E-40C5-86B3-DE881D7D09F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE56441C-B66E-40C5-86B3-DE881D7D09F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6AC60A7-D695-4621-92C6-7EB792598A4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6AC60A7-D695-4621-92C6-7EB792598A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6AC60A7-D695-4621-92C6-7EB792598A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6AC60A7-D695-4621-92C6-7EB792598A4D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B36D195-FB00-45A3-8698-43A8C76A79B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B36D195-FB00-45A3-8698-43A8C76A79B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B36D195-FB00-45A3-8698-43A8C76A79B2}.Release|Any CPU.ActiveCfg = Release|Any CPU

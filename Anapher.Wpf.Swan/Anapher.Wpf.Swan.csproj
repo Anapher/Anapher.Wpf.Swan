@@ -102,7 +102,11 @@
     <Compile Include="RelayCommand.cs" />
     <Compile Include="RelayCommandGeneric.cs" />
     <Compile Include="TransactionalObservableCollection.cs" />
+    <Compile Include="ViewInterface\IWindow.cs" />
+    <Compile Include="ViewInterface\IWindowServiceInterface.cs" />
+    <Compile Include="ViewInterface\WindowServiceInterface.cs" />
     <Compile Include="WindowUtilities.cs" />
+    <Compile Include="WpfWindow.cs" />
     <Compile Include="WpfWindowServiceInterface.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -113,12 +117,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Anapher.ViewInterface\Anapher.ViewInterface.csproj">
-      <Project>{b6ac60a7-d695-4621-92c6-7eb792598a4d}</Project>
-      <Name>Anapher.ViewInterface</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
