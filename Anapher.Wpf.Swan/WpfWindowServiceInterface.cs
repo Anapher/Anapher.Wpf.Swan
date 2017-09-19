@@ -76,7 +76,7 @@ namespace Anapher.Wpf.Swan
 
 		public bool? ShowDialog<TViewModel>(TViewModel viewModel)
 		{
-			return ShowDialog(viewModel, null);
+			return ShowDialog(viewModel, (object) null);
 		}
 
 		public bool? ShowDialog<TViewModel>(TViewModel viewModel, object callerViewModel)
@@ -123,14 +123,14 @@ namespace Anapher.Wpf.Swan
 			}
 		}
 
-		public bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate) where T : Window
+		public bool? ShowDialog(ShowDialogDelegate<Window> showDialogDelegate)
 		{
-			return ShowDialog(showDialogDelegate, null);
+			return ShowDialog(showDialogDelegate, (object) null);
 		}
 
-		public bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate, object callerViewModel) where T : Window
+		public bool? ShowDialog(ShowDialogDelegate<Window> showDialogDelegate, object callerViewModel)
 		{
-			var window = GetViewModelWindowOrCurrent(callerViewModel) as T;
+			var window = GetViewModelWindowOrCurrent(callerViewModel);
 			return showDialogDelegate(window);
 		}
 
