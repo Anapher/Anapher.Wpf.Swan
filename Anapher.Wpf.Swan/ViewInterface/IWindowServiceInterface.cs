@@ -86,19 +86,17 @@ namespace Anapher.Wpf.Swan.ViewInterface
 		/// <summary>
 		/// Show a new dialog (e. g. a file dialog)
 		/// </summary>
-		/// <typeparam name="T">The type of the parameter of the delegate. For WPF, that must be Window</typeparam>
 		/// <param name="showDialogDelegate">The delegate that will open the dialog</param>
 		/// <returns>Return the dialog result</returns>
-        bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate) where T : Window;
+	    bool? ShowDialog(ShowDialogDelegate<Window> showDialogDelegate);
 
-		/// <summary>
-		/// Show a new dialog (e. g. a file dialog)
-		/// </summary>
-		/// <typeparam name="T">The type of the parameter of the delegate. For WPF, that must be Window</typeparam>
-		/// <param name="showDialogDelegate">The delegate that will open the dialog</param>
-		/// <param name="callerViewModel">The view model of the window that should be the parent of the dialog</param>
-		/// <returns>Return the dialog result</returns>
-		bool? ShowDialog<T>(ShowDialogDelegate<T> showDialogDelegate, object callerViewModel) where T : Window;
+	    /// <summary>
+	    /// Show a new dialog (e. g. a file dialog)
+	    /// </summary>
+	    /// <param name="showDialogDelegate">The delegate that will open the dialog</param>
+	    /// <param name="callerViewModel">The view model of the window that should be the parent of the dialog</param>
+	    /// <returns>Return the dialog result</returns>
+	    bool? ShowDialog(ShowDialogDelegate<Window> showDialogDelegate, object callerViewModel);
 
 	    /// <summary>
 	    ///     Displays a message box.
