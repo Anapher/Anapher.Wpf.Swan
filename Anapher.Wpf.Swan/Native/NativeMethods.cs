@@ -64,7 +64,13 @@ namespace Anapher.Wpf.Swan.Native
         [DllImport("kernel32.dll")]
         internal static extern IntPtr GetCurrentThreadId();
 
-        internal delegate bool EnumResNameProcDelegate(
+	    [DllImport("Shell32.dll", SetLastError = false)]
+	    internal static extern Int32 SHGetStockIconInfo(SHSTOCKICONID siid, SHGSI uFlags, ref SHSTOCKICONINFO psii);
+
+	    [DllImport("user32.dll", SetLastError = true)]
+	    internal static extern bool DestroyIcon(IntPtr hIcon);
+
+		internal delegate bool EnumResNameProcDelegate(
             IntPtr hModule, ResourceTypes lpszType, IntPtr lpszName, IntPtr lParam);
 
         internal delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
