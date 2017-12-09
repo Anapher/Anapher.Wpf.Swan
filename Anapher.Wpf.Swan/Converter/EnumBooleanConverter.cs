@@ -18,13 +18,13 @@ namespace Anapher.Wpf.Swan.Converter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return value.Equals(parameter);
+            return Equals(value, parameter);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter,
             System.Globalization.CultureInfo culture)
         {
-            return value.Equals(true) ? parameter : Binding.DoNothing;
+            return Equals(value, true) ? parameter : Binding.DoNothing;
         }
     }
 }
