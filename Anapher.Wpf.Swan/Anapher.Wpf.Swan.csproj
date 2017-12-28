@@ -51,6 +51,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncRelayCommand.cs" />
+    <Compile Include="AsyncRelayCommandGeneric.cs" />
     <Compile Include="Behaviors\IgnoreMouseWheelBehavior.cs" />
     <Compile Include="Behaviors\TextBoxInputRegExBehaviour.cs" />
     <Compile Include="Converter\CloneConverter.cs" />
