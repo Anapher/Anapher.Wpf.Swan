@@ -47,7 +47,7 @@ namespace Anapher.Wpf.Swan
         /// <returns>Return true if the values differentiate and property changed was raised</returns>
         protected virtual bool SetProperty<T>(T value, ref T field, [CallerMemberName] string propertyName = null)
         {
-            if (field == null || !field.Equals(value))
+            if (!Equals(field, value))
             {
                 field = value;
                 OnPropertyChanged(propertyName);
