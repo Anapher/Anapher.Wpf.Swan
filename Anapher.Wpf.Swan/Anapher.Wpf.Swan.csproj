@@ -61,6 +61,7 @@
     <Compile Include="Converter\IconSizeConverter.cs" />
     <Compile Include="Converter\IsStringEmptyConverter.cs" />
     <Compile Include="Converter\NumberHelper.cs" />
+    <Compile Include="Converter\SwitchBooleanConverter.cs" />
     <Compile Include="Extensions\BindingProxy.cs" />
     <Compile Include="Extensions\EnumerationExtension.cs" />
     <Compile Include="Extensions\GridViewColumnManager.cs" />
