@@ -12,7 +12,7 @@ namespace Anapher.Wpf.Swan
     {
         public delegate Task ExecuteDelegate(T parameter);
 
-        private readonly Func<bool> _canExecute;
+        private readonly Func<T, bool> _canExecute;
 
         private readonly ExecuteDelegate _execute;
         private bool _isRunning;
@@ -21,28 +21,44 @@ namespace Anapher.Wpf.Swan
         {
         }
 
-        public AsyncRelayCommand(ExecuteDelegate execute, Func<bool> canExecute)
+        public AsyncRelayCommand(ExecuteDelegate execute, Func<T, bool> canExecute)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
         }
 
+        public event EventHandler Executing;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add
+            {
+                if (_canExecute != null)
+                    CommandManager.RequerySuggested += value;
+                Executing += value;
+            }
+            remove
+            {
+                if (_canExecute != null)
+                    CommandManager.RequerySuggested -= value;
+                Executing -= value;
+            }
+        }
+
         public bool CanExecute(object parameter)
         {
-            return !_isRunning && (_canExecute == null || _canExecute());
+            return !_isRunning && (_canExecute == null || _canExecute((T) parameter));
         }
 
         public async void Execute(object parameter)
         {
             _isRunning = true;
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            Executing?.Invoke(this, EventArgs.Empty);
 
             await _execute((T) parameter);
 
             _isRunning = false;
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            Executing?.Invoke(this, EventArgs.Empty);
         }
-
-        public event EventHandler CanExecuteChanged;
     }
 }

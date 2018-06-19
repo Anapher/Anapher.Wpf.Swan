@@ -29,7 +29,7 @@ namespace Anapher.Wpf.Swan
 	{
 		public delegate void ExecuteDelegate(T parameter);
 
-		private readonly Func<bool> _canExecute;
+		private readonly Func<T, bool> _canExecute;
 		private readonly ExecuteDelegate _execute;
 
 		public RelayCommand(ExecuteDelegate execute)
@@ -37,7 +37,7 @@ namespace Anapher.Wpf.Swan
 		{
 		}
 
-		public RelayCommand(ExecuteDelegate execute, Func<bool> canExecute)
+		public RelayCommand(ExecuteDelegate execute, Func<T, bool> canExecute)
 		{
 			_execute = execute ?? throw new ArgumentNullException(nameof(execute));
 			_canExecute = canExecute;
@@ -59,7 +59,7 @@ namespace Anapher.Wpf.Swan
 
 		public bool CanExecute(object parameter)
 		{
-			return _canExecute == null || _canExecute.Invoke();
+			return _canExecute == null || _canExecute.Invoke((T) parameter);
 		}
 
 		void ICommand.Execute(object parameter)
