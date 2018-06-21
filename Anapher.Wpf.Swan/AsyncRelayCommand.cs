@@ -27,6 +27,24 @@ namespace Anapher.Wpf.Swan
             _canExecute = canExecute;
         }
 
+        public event EventHandler Executing;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add
+            {
+                if (_canExecute != null)
+                    CommandManager.RequerySuggested += value;
+                Executing += value;
+            }
+            remove
+            {
+                if (_canExecute != null)
+                    CommandManager.RequerySuggested -= value;
+                Executing -= value;
+            }
+        }
+
         public bool CanExecute(object parameter)
         {
             return !_isRunning && (_canExecute == null || _canExecute());
@@ -35,14 +53,12 @@ namespace Anapher.Wpf.Swan
         public async void Execute(object parameter)
         {
             _isRunning = true;
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            Executing?.Invoke(this, EventArgs.Empty);
 
             await _execute(parameter);
 
             _isRunning = false;
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            Executing?.Invoke(this, EventArgs.Empty);
         }
-
-        public event EventHandler CanExecuteChanged;
     }
 }
