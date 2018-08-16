@@ -20,8 +20,11 @@ namespace Anapher.Wpf.Swan
 			remove => Window.Closed -= value;
 		}
 
-		public event CancelEventHandler Closing;
-
+		public event CancelEventHandler Closing
+		{
+		    add => Window.Closing += value;
+		    remove => Window.Closing -= value;
+		}
 
 		public void Close()
 		{

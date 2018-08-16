@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace Anapher.Wpf.Swan.Native
 {
 	[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-	public struct SHSTOCKICONINFO
+	internal struct SHSTOCKICONINFO
 	{
 		public UInt32 cbSize;
 		public IntPtr hIcon;

@@ -5,7 +5,7 @@ using System;
 namespace Anapher.Wpf.Swan.Native
 {
 	[Flags]
-	public enum SHGSI : uint
+	internal enum SHGSI : uint
 	{
 		SHGSI_ICONLOCATION = 0,
 		SHGSI_ICON = 0x000000100,
