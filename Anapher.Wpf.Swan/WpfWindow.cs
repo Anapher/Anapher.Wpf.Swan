@@ -31,12 +31,18 @@ namespace Anapher.Wpf.Swan
 			Window.Close();
 		}
 
-		public void Activate()
+		public bool Activate()
 		{
-			Window.Activate();
+		    return Window.Activate();
 		}
 
-		public WindowState WindowState
+	    public MessageBoxResult ShowMessageBox(string text, string caption, MessageBoxButton buttons,
+	        MessageBoxImage icon, MessageBoxResult defResult, MessageBoxOptions options)
+	    {
+	        return MessageBoxEx.Show(Window, text, caption, buttons, icon, defResult, options);
+	    }
+
+	    public WindowState WindowState
 		{
 			get => Window.WindowState;
 			set => Window.WindowState = value;
