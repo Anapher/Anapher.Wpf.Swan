@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Expression.Blend.Sdk.WPF" Version="1.0.1" />
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xaml" />

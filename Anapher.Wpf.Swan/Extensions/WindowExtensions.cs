@@ -11,9 +11,8 @@ namespace Anapher.Wpf.Swan.Extensions
         /// <param name="owner">The window which will own the message box</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <returns>One of the <see cref="MessageBoxResult" /> values</returns>
-        public static MessageBoxResult ShowMessage(this IWindow owner, string text) =>
-            owner.ShowMessageBox(text, string.Empty, MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.None,
-                MessageBoxOptions.None);
+        public static MessageBoxResult ShowMessage(this IWindowInteractionService owner, string text) =>
+            owner.ShowMessageBox(text, null, MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.None, MessageBoxOptions.None);
 
         /// <summary>
         ///     Displays a message box.
@@ -22,9 +21,8 @@ namespace Anapher.Wpf.Swan.Extensions
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <returns>One of the <see cref="MessageBoxResult" /> values</returns>
-        public static MessageBoxResult ShowMessage(this IWindow owner, string text, string caption) =>
-            owner.ShowMessageBox(text, caption, MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.None,
-                MessageBoxOptions.None);
+        public static MessageBoxResult ShowMessage(this IWindowInteractionService owner, string text, string caption) =>
+            owner.ShowMessageBox(text, caption, MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.None, MessageBoxOptions.None);
 
         /// <summary>
         ///     Displays a message box.
@@ -37,9 +35,8 @@ namespace Anapher.Wpf.Swan.Extensions
         ///     message box.
         /// </param>
         /// <returns>One of the <see cref="MessageBoxResult" /> values</returns>
-        public static MessageBoxResult ShowMessage(this IWindow owner, string text, string caption, MessageBoxButton buttons) =>
-            owner.ShowMessageBox(text, caption, buttons, MessageBoxImage.None, MessageBoxResult.None,
-                MessageBoxOptions.None);
+        public static MessageBoxResult ShowMessage(this IWindowInteractionService owner, string text, string caption, MessageBoxButton buttons) =>
+            owner.ShowMessageBox(text, caption, buttons, MessageBoxImage.None, MessageBoxResult.None, MessageBoxOptions.None);
 
         /// <summary>
         ///     Displays a message box.
@@ -56,7 +53,7 @@ namespace Anapher.Wpf.Swan.Extensions
         ///     box.
         /// </param>
         /// <returns>One of the <see cref="MessageBoxResult" /> values</returns>
-        public static MessageBoxResult ShowMessage(this IWindow owner, string text, string caption, MessageBoxButton buttons,
+        public static MessageBoxResult ShowMessage(this IWindowInteractionService owner, string text, string caption, MessageBoxButton buttons,
             MessageBoxImage icon) =>
             owner.ShowMessageBox(text, caption, buttons, icon, MessageBoxResult.None, MessageBoxOptions.None);
 
@@ -79,8 +76,9 @@ namespace Anapher.Wpf.Swan.Extensions
         ///     message box.
         /// </param>
         /// <returns>One of the <see cref="MessageBoxResult" /> values</returns>
-        public static MessageBoxResult ShowMessage(this IWindow owner, string text, string caption, MessageBoxButton buttons,
+        public static MessageBoxResult ShowMessage(this IWindowInteractionService owner, string text, string caption, MessageBoxButton buttons,
             MessageBoxImage icon, MessageBoxResult defResult) =>
             owner.ShowMessageBox(text, caption, buttons, icon, defResult, MessageBoxOptions.None);
+
     }
 }
